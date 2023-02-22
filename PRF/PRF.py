@@ -1,7 +1,9 @@
 from PRG.PRG import PRG
 from util.util import binstr
 
+
 class PRF:
+
     def __init__(self, security_parameter: int, generator: int,
                  prime_field: int, key: int) -> None:
         """
@@ -17,7 +19,8 @@ class PRF:
         """
         self.key = key
         self.security_parameter = security_parameter
-        self.prg = PRG(security_parameter, generator, prime_field, 2*security_parameter)
+        self.prg = PRG(security_parameter, generator, prime_field,
+                       2 * security_parameter)
 
     def evaluate(self, x: int) -> int:
         """
@@ -31,4 +34,3 @@ class PRF:
             lhalf = len(decstr) // 2
             seed = int(decstr[:lhalf] if bit == '0' else decstr[lhalf:], 2)
         return seed
-

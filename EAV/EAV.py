@@ -1,9 +1,11 @@
 from PRG.PRG import PRG
 from util.util import xor
 
+
 class Eavesdrop:
-    def __init__(self, security_parameter: int, key: int, expansion_factor: int,
-                 generator: int, prime_field: int):
+
+    def __init__(self, security_parameter: int, key: int,
+                 expansion_factor: int, generator: int, prime_field: int):
         """
         Initialize values here
         :param security_parameter: 1ⁿ
@@ -18,7 +20,8 @@ class Eavesdrop:
         :type prime_field: int
         """
         self.key = key
-        self.prg = PRG(security_parameter, generator, prime_field, expansion_factor)
+        self.prg = PRG(security_parameter, generator, prime_field,
+                       expansion_factor)
 
     def enc(self, message: str) -> str:
         """

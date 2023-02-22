@@ -2,6 +2,7 @@ class DLP:
     """
     Class for performing dicrete log computation and finding the hardcore predicate.
     """
+
     def __init__(self, generator: int, prime_field: int) -> None:
         """
         Initialize values here
@@ -12,7 +13,7 @@ class DLP:
         """
         self.g = generator
         self.p = prime_field
-    
+
     def evaluate(self, x: int) -> int:
         """
         Perform the discrete log computation [f(x) = g^x mod p]
@@ -22,7 +23,7 @@ class DLP:
         :rtype: int
         """
         return pow(self.g, x, self.p)
-    
+
     def hardcore_predicate(self, x: int) -> int:
         """
         Returns the hardcore predicate given the output of dicrete log (The MSB)
@@ -31,12 +32,14 @@ class DLP:
         :return: The MSB of f(x)
         :rtype: int
         """
-        return 1 if(x >= (self.p-1)//2) else 0
+        return 1 if (x >= (self.p - 1) // 2) else 0
+
 
 class PRG:
     """
     Class for generating a n-bit pseudo random number
     """
+
     def __init__(self, security_parameter: int, generator: int,
                  prime_field: int, expansion_factor: int) -> None:
         """
@@ -64,9 +67,11 @@ class PRG:
         :return: The generated pseudo-random bit-string
         :rtype: str
         """
+
         def genbit():
             nonlocal seed
-            seed, hp = self.owf.evaluate(seed), self.owf.hardcore_predicate(seed)
+            seed, hp = self.owf.evaluate(seed), self.owf.hardcore_predicate(
+                seed)
             return str(hp)
+
         return ''.join(genbit() for _ in range(self.l))
-        

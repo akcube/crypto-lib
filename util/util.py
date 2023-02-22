@@ -1,6 +1,6 @@
-
 def binstr(x: int, pad: int = 0):
     return format(x, f'0{pad}b')
+
 
 def xor(x: str, y: str) -> str:
     """
