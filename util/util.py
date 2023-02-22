@@ -1,4 +1,13 @@
 def binstr(x: int, pad: int = 0):
+    """
+    Convert x into it's binary string and pad it with zeros on the left till len(x) >= pad is satisfied
+    :param x: x
+    :type x: int
+    :param pad: zero-padding
+    :type pad: int
+    :return: A binary string padded with zeros as required
+    :rtype: str
+    """
     return format(x, f'0{pad}b')
 
 
