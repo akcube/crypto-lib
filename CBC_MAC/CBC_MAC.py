@@ -3,6 +3,9 @@ from util.util import blockify
 
 
 class CBC_MAC:
+    """
+    A class representing a Cipher-Block Chaining (CBC) Message Authentication Code (MAC).
+    """
 
     def __init__(self, security_parameter: int, generator: int,
                  prime_field: int, keys: list[int]) -> None:
