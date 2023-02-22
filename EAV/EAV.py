@@ -19,6 +19,7 @@ class Eavesdrop:
         :param prime_field: p
         :type prime_field: int
         """
+        self.n = security_parameter
         self.key = key
         self.prg = PRG(security_parameter, generator, prime_field,
                        expansion_factor)
@@ -31,7 +32,7 @@ class Eavesdrop:
         :return: Encrypted cipher
         :rtype: str
         """
-        return xor(self.prg.generate(self.key), message)
+        return xor(self.prg.generate(self.key), message).zfill(self.n)
 
     def dec(self, cipher: str) -> str:
         """
@@ -41,4 +42,4 @@ class Eavesdrop:
         :return: Decrypted text message
         :rtype: str
         """
-        return xor(self.prg.generate(self.key), cipher)
+        return xor(self.prg.generate(self.key), cipher).zfill(self.n)
